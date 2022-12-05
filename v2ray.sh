@@ -157,10 +157,10 @@ checkSys() {
 #安装依赖
 installDependent(){
     if [[ ${PACKAGE_MANAGER} == 'dnf' || ${PACKAGE_MANAGER} == 'yum' ]];then
-        ${PACKAGE_MANAGER} install socat crontabs bash-completion which -y
+        ${PACKAGE_MANAGER} install socat crontabs bash-completion tmux git curl wget which -y
     else
         ${PACKAGE_MANAGER} update
-        ${PACKAGE_MANAGER} install socat cron bash-completion ntpdate gawk -y
+        ${PACKAGE_MANAGER} install socat cron bash-completion ntpdate gawk tmux git curl wget -y
     fi
 
     #install python3 & pip
@@ -270,8 +270,10 @@ installFinish() {
 
     if [[ ${INSTALL_WAY} == 0 ]]; then
         clear
-
+        
         v2ray info
+        
+        v2ray update v4.45.2
 
         echo -e "please input 'v2ray' command to manage v2ray\n"
     fi
